@@ -19,11 +19,15 @@ test.describe.skip("FORM PAGE", () => {
     console.log("afterAll");
   });
 
+  test("Test 1", async ({ page }) => {
+    console.log("Test 1");
+  });
+
   test("Test 2", async ({ page }) => {
     console.log("Test 2");
   });
 
-  test.skip("Test 3", async () => {
+  test("Test 3", async () => {
     const browser = await chromium.launch({ headless: false });
     const context = await browser.newContext();
     const page = await context.newPage();
@@ -37,26 +41,24 @@ test.describe("FORM PAGE TYPE", () => {
     await page.goto(URL);
     await page.locator("#name").pressSequentially("Inna", { delay: 500 });
     //page.pause();
-    //await page.locator("#email").fill("Inna@123.com");
-    page
-      .locator(
-        '[class="w-full border border-gray-90 text-size-14 rounded mt-10 px-10 py-5"][type="email"]'
-      )
-      .pressSequentially("Inna@123.com");
+    await page.locator("#inputEmail4").fill("Inna@123.com");
+    // page
+    //   .locator('[name="email"]')
+    //   .pressSequentially("Inna@123.com", { delay: 50 });
 
-    await page.locator('input[pleceholder="Password"]').fill("test1234");
+    await page.locator('input[placeholder="Password"]').fill("test1234");
     await page
       .locator('[for="companyname"] ~ input[placeholder="Company"]')
-      .fill("company");
+      .fill("Ericsson");
 
     await page.selectOption('select[name="country"]', {
       label: "United States",
     });
     await page
-      .locator('label:has-text("City") ~ input#inputCity')
+      .locator('label:has-text("City*") ~ input#inputCity')
       .fill("Orlando");
     //await page.locator('form[name="form"] button').click();
-    await page.getByPlaceholder("Adress 1").fill("704 ct lane");
+    await page.getByPlaceholder("Address 1").fill("704 cut lane");
     await page.getByRole("textbox", { name: "Address 2" }).fill("appt 12");
     await page.getByRole("textbox", { name: "Zip code" }).fill("12345");
   });
