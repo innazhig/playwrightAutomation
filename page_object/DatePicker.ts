@@ -19,14 +19,18 @@ export class DatePicker {
   get monthOfTheYear() {
     return '[class="ui-datepicker-month"]';
   }
-  get prevYear() {
+  get prevMonth() {
     return '[title="Prev"]';
   }
-  get nextYear() {
+  get nextMonth() {
     return '[title="Next"]';
   }
+  // get getDate() {
+  //   return ".ui-state-default";
+  // }
   get getDate() {
-    return ".ui-state-default";
+    // todays date
+    return '[class="ui-state-default ui-state-highlight"]';
   }
   get dateFromComponent() {
     return "#ui-datepicker-div";
@@ -43,7 +47,7 @@ export class DatePicker {
     await expect(header).toContainText("Date Picker");
   }
 
-  randomYearNumber = _.random(1, 50);
+  randomClickNumber = _.random(1, 50);
   date = _.random(1, 30);
 
   public async dateFromToday() {
@@ -64,8 +68,9 @@ export class DatePicker {
     //await this.page.click(this.fromInput);
     await this.page.locator(this.fromInput).click();
 
-    for (let i = 0; i < this.randomYearNumber; i++) {
-      await this.page.locator(this.prevYear).click();
+    for (let i = 0; i < this.randomClickNumber; i++) {
+      // click on prev month button
+      await this.page.locator(this.prevMonth).click();
     }
 
     let year = await this.page.locator(this.dateOfTheYear).textContent();
@@ -73,7 +78,7 @@ export class DatePicker {
       .locator(this.dateOfTheMonth)
       .locator('[selected="selected"]')
       .textContent();
-    console.log(this.randomYearNumber);
+    console.log(this.randomClickNumber);
     console.log(year, month);
     console.log(this.date);
     await this.page
