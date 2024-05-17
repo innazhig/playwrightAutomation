@@ -10,6 +10,7 @@
     "ng": "ng",
     "start": "ng serve",
     "test:formPage": "npx playwright test formPage.spec.ts",
+    "test:dqDatePicker": "npx playwright test --ui dqDatePicker.spec.ts",
     "report": "npx playwright show-report"
   },
   "dependencies": {
