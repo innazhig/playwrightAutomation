@@ -48,3 +48,6 @@ Thumbs.db
 # tests
 /playwright-report
 /test-results
+
+# dotenv
+/env
