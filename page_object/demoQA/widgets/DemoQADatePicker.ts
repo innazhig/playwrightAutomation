@@ -149,7 +149,7 @@ export class DemoQADatePicker {
   public async pickDate() {
     let dateInputLocator = this.dateInputLocator;
     await dateInputLocator.click();
-    const day = _.random(1, 28);
+    const day = 9; //_.random(1, 28);
     const dayStr = day < 10 ? `0${day}` : day;
     const month = _.random(1, 12);
     const year = _.random(1900, 2100);
@@ -162,7 +162,13 @@ export class DemoQADatePicker {
     // select a year from the dropdown
     await this.page.locator(this.yearSelect).selectOption(year.toString());
     // select a day from the dropdown
-    await this.dayOfTheMonthLocator(dayStr).click();
+    //await this.dayOfTheMonthLocator(dayStr).click(); //.react-datepicker__day--weekend
+    const re = new RegExp(
+      String.raw`${this.monthsByNumbers[month]} ${day}`,
+      "g"
+    );
+    console.log(`${this.monthsByNumbers[month]} ${day}`);
+    await this.page.getByLabel(re).click();
 
     //let dateInputLocator = this.dateInputLocator;
     //await this.page.pause();
