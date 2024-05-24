@@ -11,7 +11,9 @@
     "start": "ng serve",
     "test:formPage": "npx playwright test formPage.spec.ts",
     "test:dqDatePicker": "npx playwright test --ui dqDatePicker.spec.ts",
-    "dragAndDrop": "npx playwright test dragAndDrop.spec.ts --ui ENV='develop'",
+    "dragAndDropENV": "npx playwright test dragAndDrop.spec.ts --ui ENV='develop'",
+    "dragAndDrop": "npx playwright test dragAndDrop.spec.ts --ui",
+    "dqDragAndDrop": "npx playwright test --ui dqDragAndDrop.spec.ts",
     "report": "npx playwright show-report"
   },
   "dependencies": {
