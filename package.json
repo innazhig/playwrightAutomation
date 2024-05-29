@@ -14,6 +14,7 @@
     "dragAndDropENV": "npx playwright test dragAndDrop.spec.ts --ui ENV='develop'",
     "dragAndDrop": "npx playwright test dragAndDrop.spec.ts --ui",
     "dqDragAndDrop": "npx playwright test --ui dqDragAndDrop.spec.ts",
+    "dropDown": "npx playwright test dropDown.spec.ts --ui",
     "report": "npx playwright show-report"
   },
   "dependencies": {
