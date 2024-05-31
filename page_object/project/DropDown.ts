@@ -22,13 +22,13 @@ export class DropDown {
 
   async interactWithDropDown() {
     await this.page.locator(this.dropDownInput).click();
-    expect(this.page.locator(this.dropDownList)).toHaveText(this.text);
+    await expect(this.page.locator(this.dropDownList)).toHaveText(this.text);
     console.log(await this.page.locator(this.dropDownList).allTextContents());
     await this.page
       .locator(this.dropDownList)
       .filter({ hasText: "Dark" })
       .click();
-    expect(this.page.locator(this.header)).toHaveCSS(
+    await expect(this.page.locator(this.header)).toHaveCSS(
       "background-color",
       "rgb(34, 43, 69)"
     );
