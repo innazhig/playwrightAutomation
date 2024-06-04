@@ -9,7 +9,11 @@ import { defineConfig, devices } from "@playwright/test";
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+//require('dotenv').config();
+
+// set to true to use DemoQa authentication
+// set to false to use PASV authentication
+const SETUP = true;
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -39,16 +43,29 @@ export default defineConfig({
   projects: [
     // Setup project
     { name: "setup", testMatch: /.*\.setup\.ts/ },
+    { name: "auth-pasv", testMatch: /.*\.setupPasv\.ts/ },
     {
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
         headless: false,
         // Use prepared auth state.
-        storageState: "./.auth/user.json",
+        storageState: `${
+          SETUP ? "./.auth/user.json" : "./.auth/userPasv.json"
+        }`,
       },
-      dependencies: ["setup"],
+      dependencies: [`${SETUP ? "setup" : "auth-pasv"}`],
     },
+    // {
+    //   name: "chromium2",
+    //   use: {
+    //     ...devices["Desktop Chrome"],
+    //     headless: false,
+    //     // Use prepared auth state.
+    //     storageState: "./.auth/userPasv.json",
+    //   },
+    //   dependencies: ["auth-pasv"],
+    // },
     /*
     {
       name: 'firefox',
