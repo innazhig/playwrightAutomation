@@ -1,0 +1,39 @@
+{
+  "cookies": [
+    {
+      "name": "user_auth",
+      "value": "true",
+      "domain": ".pasv.us",
+      "path": "/",
+      "expires": 1717625556.580151,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    },
+    {
+      "name": "connect.sid",
+      "value": "s%3AJynJbatHn9hokx45jN_TbCU44aIkiE3B.pZe324ER85IxxUQwSBGIQQO%2FShpOrYbINUrhymQCi5w",
+      "domain": ".pasv.us",
+      "path": "/",
+      "expires": 1717625556.580344,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "Strict"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://coding.pasv.us",
+      "localStorage": [
+        {
+          "name": "lang",
+          "value": "en"
+        },
+        {
+          "name": "userId",
+          "value": "62d8ba6fbae9a71ddf21da50"
+        }
+      ]
+    }
+  ]
+}
