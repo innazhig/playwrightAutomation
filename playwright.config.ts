@@ -25,7 +25,7 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 2,
+  retries: process.env.CI ? 2 : 1,
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -42,24 +42,24 @@ export default defineConfig({
   expect: {
     timeout: 5000,
   },
-  testMatch: "test.list.ts",
+  //testMatch: "test.list.ts",
 
   /* Configure projects for major browsers */
   projects: [
     // Setup project
-    { name: "setup", testMatch: /.*\.setup\.ts/ },
-    { name: "auth-pasv", testMatch: /.*\.setupPasv\.ts/ },
+    // { name: "setup", testMatch: /.*\.setup\.ts/ },
+    // { name: "auth-pasv", testMatch: /.*\.setupPasv\.ts/ },
     {
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
         headless: false,
         // Use prepared auth state.
-        storageState: `${
-          SETUP ? "./.auth/user.json" : "./.auth/userPasv.json"
-        }`,
+        // storageState: `${
+        //   SETUP ? "./.auth/user.json" : "./.auth/userPasv.json"
+        // }`,
       },
-      dependencies: [`${SETUP ? "setup" : "auth-pasv"}`],
+      //dependencies: [`${SETUP ? "setup" : "auth-pasv"}`],
     },
     // {
     //   name: "chromium2",
