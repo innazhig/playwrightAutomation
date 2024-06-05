@@ -2,7 +2,7 @@
   "cookies": [
     {
       "name": "token",
-      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IklubmEiLCJwYXNzd29yZCI6IklubmFMYXN0MTIjIiwiaWF0IjoxNzE3NDUyODU4fQ.ZkafbOc_umwv7B2HP1jne9Zc6A5SVDR6YPAKxjupjNI",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6IklubmEiLCJwYXNzd29yZCI6IklubmFMYXN0MTIjIiwiaWF0IjoxNzE3NTQ5MDEwfQ.wE98IlYroQW4xxVl0iuyE4W9DMJ2JJWb-hF61NZD1U8",
       "domain": "demoqa.com",
       "path": "/",
       "expires": -1,
@@ -12,7 +12,7 @@
     },
     {
       "name": "expires",
-      "value": "2024-06-10T22%3A14%3A18.959Z",
+      "value": "2024-06-12T00%3A56%3A50.405Z",
       "domain": "demoqa.com",
       "path": "/",
       "expires": -1,

@@ -48,6 +48,7 @@ Thumbs.db
 # tests
 /playwright-report
 /test-results
+/screen
 
 # dotenv
 /env
