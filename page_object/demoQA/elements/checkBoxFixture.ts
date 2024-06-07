@@ -10,8 +10,8 @@ export const test = base.extend<Fixture>({
     const checkBoxPage = new CheckBox(page);
     await checkBoxPage.goto();
     await use(checkBoxPage);
-    //await todoPage.removeAll(); // clear up the check???
-  },
+    //await checkBoxPage.uncheckAll(); // clear up the check???
+    await page.reload();
 });
 
 export { expect } from "@playwright/test";
