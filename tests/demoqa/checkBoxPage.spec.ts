@@ -3,6 +3,7 @@ import {
   expect,
 } from "../../page_object/demoQA/elements/checkBoxFixture";
 
+
 test.describe("DemoQA Check box fixture test", () => {
   test("Check All", async ({ page, checkBoxPage }) => {
     await expect(checkBoxPage.title).toBeVisible();
@@ -37,4 +38,5 @@ test.describe("DemoQA Check box fixture test", () => {
     await checkBoxPage.expandAll();
     expect(await page.locator(checkBoxPage.collapsedListItems).count()).toBe(0);
   });
+
 });

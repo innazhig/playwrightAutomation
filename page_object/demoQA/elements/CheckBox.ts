@@ -46,6 +46,7 @@ export class CheckBox {
     //"#tree-node-home";
   }
 
+
   async goto() {
     await this.page.goto("https://demoqa.com/checkbox");
   }
@@ -53,6 +54,7 @@ export class CheckBox {
   async reloadPage(): Promise<void> {
     await this.page.reload();
   }
+
 
   /**
    *
@@ -75,6 +77,7 @@ export class CheckBox {
     }
     console.log("text = " + text + " not found");
   }
+
 
   // async clickButtonAllLevels(text: string): Promise<void> {
   //   const button = this.getButtonAllLevels(text);
@@ -138,6 +141,7 @@ export class CheckBox {
     console.log("text = " + text + " not found");
   }
 
+
   async checkAll() {
     const checkBox = this.page.locator(this.rootNode);
     await expect(checkBox).toBeVisible(); //hidden ???
@@ -149,6 +153,7 @@ export class CheckBox {
     }
   }
 
+
   async expandAll() {
     let list = this.page.locator(this.collapsedListItems);
     while ((await list.count()) > 0) {
@@ -156,6 +161,7 @@ export class CheckBox {
       list = this.page.locator(this.collapsedListItems);
     }
   }
+
 
   /**
    *
