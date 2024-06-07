@@ -25,7 +25,12 @@ export class CheckBox {
   }
 
   get unExpanded() {
+    //return 'button[class="rct-collapse rct-collapse-btn"]';
     return '[class="rct-icon rct-icon-expand-close"]';
+  }
+
+  get collapsedListItems() {
+    return 'li[class$="rct-node-collapsed"]';
   }
 
   get expanded() {
@@ -41,14 +46,23 @@ export class CheckBox {
     //"#tree-node-home";
   }
 
+  async goto() {
+    await this.page.goto("https://demoqa.com/checkbox");
+  }
+
+  async reloadPage(): Promise<void> {
+    await this.page.reload();
+  }
+
   /**
    *
    * @param {string} text
    */
   async clickButton(text: string): Promise<void> {
-    const tree = this.page.locator(this.boxesTree);
+    const tree = this.page.locator(this.boxesTree).first();
     const listItems = await tree.getByRole("listitem").all();
     let i = 0;
+
     for (const item of listItems) {
       const itemContent = await item.textContent();
       console.log(i, itemContent);
@@ -60,6 +74,50 @@ export class CheckBox {
       i++;
     }
     console.log("text = " + text + " not found");
+  }
+
+  // async clickButtonAllLevels(text: string): Promise<void> {
+  //   const button = this.getButtonAllLevels(text);
+  //   if (button !== null) {
+  //     await button.click();
+  //   }
+  //   else console.log("text = " + text + " not found");
+  // }
+
+  async clickButtonAllLevels(
+    text: string,
+    level = 0,
+    parent = null
+  ): Promise<Boolean> {
+    if (!parent) parent = this.page.locator(this.boxesTree);
+    else parent = parent.locator(this.boxesTree);
+    const listItems = await parent.getByRole("listitem").all();
+
+    // check the top level list
+    let i = 0;
+    for (const item of listItems) {
+      const itemContent = await item.textContent();
+      console.log(i, itemContent);
+      if (itemContent === text) {
+        await item.getByRole("button").click(); // Locator
+        return true;
+      }
+
+      i++;
+    }
+    console.log("text = " + text + " not found on level " + level);
+
+    // going deeper
+    for (const item of listItems) {
+      const itemClass = await item.getAttribute("class");
+      console.log("node " + itemClass);
+      if (itemClass.toLowerCase().includes("rct-node-parent")) {
+        console.log("----------going into subtree-------");
+        await item.getByRole("button").click(); // expand the subtree
+        if (await this.clickButtonAllLevels(text, ++level, item)) return true;
+      }
+    }
+    return false; //
   }
 
   async getButton(text: string) {
@@ -80,10 +138,6 @@ export class CheckBox {
     console.log("text = " + text + " not found");
   }
 
-  async goto() {
-    await this.page.goto("https://demoqa.com/checkbox");
-  }
-
   async checkAll() {
     const checkBox = this.page.locator(this.rootNode);
     await expect(checkBox).toBeVisible(); //hidden ???
@@ -92,6 +146,14 @@ export class CheckBox {
 
     for (const item of await this.page.getByRole("checkbox").all()) {
       await expect(item).toBeChecked();
+    }
+  }
+
+  async expandAll() {
+    let list = this.page.locator(this.collapsedListItems);
+    while ((await list.count()) > 0) {
+      await list.first().getByRole("button").click();
+      list = this.page.locator(this.collapsedListItems);
     }
   }
 
