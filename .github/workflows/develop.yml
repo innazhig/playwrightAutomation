@@ -37,3 +37,4 @@ jobs:
           name: playwright-allure
           path: allure-report/
           retention-days: 30
+
