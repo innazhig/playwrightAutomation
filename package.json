@@ -16,6 +16,7 @@
     "dqDragAndDrop": "npx playwright test --ui dqDragAndDrop.spec.ts",
     "dropDown": "npx playwright test dropDown.spec.ts --ui",
     "lambdaTest": "npx playwright test lambdaTest",
+    "networkTests": "npx playwright test network",
     "report": "npx playwright show-report"
   },
   "dependencies": {
