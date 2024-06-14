@@ -16,7 +16,7 @@ test.describe("ASSERTION", () => {
 
     await expect(page.locator('img[src$="/Vimeo.svg"]')).toHaveAttribute(
       "alt",
-      "vimeos",
+      "vimeo",
       { timeout: 1000 }
     );
   });
