@@ -53,7 +53,7 @@ export default defineConfig({
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
-        headless: false,
+        headless: true,
         // Use prepared auth state.
         // storageState: `${
         //   SETUP ? "./.auth/user.json" : "./.auth/userPasv.json"
