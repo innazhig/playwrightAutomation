@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { test, chromium } from "@playwright/test";
 const URL = "https://www.lambdatest.com/selenium-playground/input-form-demo";
 
 test.describe.skip("FORM PAGE", () => {
