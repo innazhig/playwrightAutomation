@@ -1,0 +1,7 @@
+curl --output /dev/null --silent --head --fail http://localhost:4200:
+curl: The command-line tool used to make HTTP requests.
+--output /dev/null: Discards the output, effectively ignoring any response body.
+--silent: Runs curl silently, without showing progress or error messages.
+--head: Fetches only the headers of the response, not the body.
+--fail: Returns an error code if the HTTP request fails (e.g., the server is not responding, or it returns a 4xx or 5xx status code).
+http://localhost:4200: The URL to check.
