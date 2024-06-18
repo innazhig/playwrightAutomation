@@ -17,7 +17,8 @@
     "dropDown": "npx playwright test dropDown.spec.ts --ui",
     "lambdaTest": "npx playwright test lambdaTest",
     "networkTests": "npx playwright test network",
-    "report": "npx playwright show-report"
+    "report": "npx playwright show-report",
+    "projectTest": "npx playwright test project"
   },
   "dependencies": {
     "@angular/animations": "^14.2.12",
